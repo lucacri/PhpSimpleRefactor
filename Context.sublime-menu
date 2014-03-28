@@ -1,0 +1,4 @@
+[{
+	"caption": "PHPRefactor: extract method",
+	"command": "php_refactor"
+}]

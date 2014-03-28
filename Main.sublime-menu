@@ -1,0 +1,47 @@
+[
+	{
+	    "id": "edit",
+	    "children":
+	    [
+	        {"id": "php_refactor"},
+	        { "command": "php_refactor" },
+	    ]
+	},
+	{
+        "caption": "Preferences",
+        "mnemonic": "n",
+        "id": "preferences",
+        "children":
+        [
+            {
+                "caption": "Package Settings",
+                "mnemonic": "P",
+                "id": "package-settings",
+                "children":
+                [
+                    {
+                        "caption": "PhpRefactor",
+                        "children":
+                        [
+                            {
+                                "command": "open_file",
+                                "args": {"file": "${packages}/PhpRefactor/PhpRefactor.sublime-settings"},
+                                "caption": "Settings – Default"
+                            },
+                            {
+                                "command": "open_file",
+                                "args": {"file": "${packages}/User/PhpRefactor.sublime-settings"},
+                                "caption": "Settings – User"
+                            },
+                            {
+                                "command": "open_file",
+                                "args": {"file": "${packages}/User/PhpRefactor.sublime-commands"},
+                                "caption": "Commands – User"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

@@ -1,0 +1,6 @@
+[
+    {
+        "caption": "PhpRefactor: extract current lines to method",
+        "command": "php_refactor"
+    }
+]
