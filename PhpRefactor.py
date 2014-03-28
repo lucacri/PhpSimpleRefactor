@@ -29,7 +29,7 @@ class PhpRefactorCommand(sublime_plugin.TextCommand):
 		rows = ''.join([str(self.rowBegin), "-", str(self.rowEnd)])
 		cmd = ''.join([self.php_path, ' ', self.refactor_path,' ',  'extract-method', ' ', self.file_name, ' ', rows, ' ', functionName, ' | patch -p1'])
 		p = subprocess.Popen(cmd, shell=True, bufsize=-1, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
-		output, error = p.communicate(self.view.substr(region).encode('utf-8'))
+		output, error = p.communicate()
 		if error:
 			sublime.error_message(error.decode('utf-8'))
 		else:
