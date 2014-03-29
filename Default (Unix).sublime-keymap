@@ -1,5 +1,5 @@
 [
     { 
-        "keys": ["ctrl+alt+r"], "command": "php_refactor"
+        "keys": ["ctrl+alt+r"], "command": "php_simple_refactor"
     }
 ]

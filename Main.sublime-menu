@@ -3,8 +3,8 @@
 	    "id": "edit",
 	    "children":
 	    [
-	        {"id": "php_refactor"},
-	        { "command": "php_refactor" },
+	        {"id": "php_simple_refactor"},
+	        { "command": "php_simple_refactor" },
 	    ]
 	},
 	{
@@ -20,22 +20,22 @@
                 "children":
                 [
                     {
-                        "caption": "PhpRefactor",
+                        "caption": "PHPSimpleRefactor",
                         "children":
                         [
                             {
                                 "command": "open_file",
-                                "args": {"file": "${packages}/PhpRefactor/PhpRefactor.sublime-settings"},
+                                "args": {"file": "${packages}/PHPSimpleRefactor/PHPSimpleRefactor.sublime-settings"},
                                 "caption": "Settings – Default"
                             },
                             {
                                 "command": "open_file",
-                                "args": {"file": "${packages}/User/PhpRefactor.sublime-settings"},
+                                "args": {"file": "${packages}/User/PHPSimpleRefactor.sublime-settings"},
                                 "caption": "Settings – User"
                             },
                             {
                                 "command": "open_file",
-                                "args": {"file": "${packages}/User/PhpRefactor.sublime-commands"},
+                                "args": {"file": "${packages}/User/PHPSimpleRefactor.sublime-commands"},
                                 "caption": "Commands – User"
                             }
                         ]

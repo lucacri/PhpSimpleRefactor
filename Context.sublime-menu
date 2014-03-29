@@ -1,4 +1,4 @@
 [{
-	"caption": "PHPRefactor: extract method",
-	"command": "php_refactor"
+	"caption": "PHPSimpleRefactor: extract method",
+	"command": "php_simple_refactor"
 }]

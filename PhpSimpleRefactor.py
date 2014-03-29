@@ -1,7 +1,7 @@
 import sublime, sublime_plugin
 import subprocess
 
-class PhpRefactorCommand(sublime_plugin.TextCommand):
+class PhpSimpleRefactorCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
 		(rowBegin,col) = self.view.rowcol(self.view.sel()[0].begin())
 		(rowEnd,col) = self.view.rowcol(self.view.sel()[0].end())
@@ -23,7 +23,7 @@ class PhpRefactorCommand(sublime_plugin.TextCommand):
 			view.run_command('save')
 			sublime.status_message('File saved')
 
-		settings = sublime.load_settings('PhpRefactor.sublime-settings')
+		settings = sublime.load_settings('PHPSimpleRefactor.sublime-settings')
 		self.php_path = settings.get('php_path')
 		self.refactor_path = settings.get('refactor_path')
 		rows = ''.join([str(self.rowBegin), "-", str(self.rowEnd)])
