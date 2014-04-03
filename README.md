@@ -17,9 +17,18 @@ Configuration
 =======
 Edit the file PHPSimpleRefactor.sublime-settings (Preferences > Package Settings > PHPSimpleRefactor > Settings – User) with the correct php_path and refactor_path.
 
+Example:
+	
+	/** FILE: PHPSimpleRefactor.sublime-settings **/
+
+	{
+		"php_path" : "/Applications/MAMP/bin/php/php5.5.3/bin/PHP",
+		"refactor_path" : "/usr/local/bin/refactor" 
+	}
+
 Usage
 =====
-In a PHP file, select the lines that you'd like to extract to a new method, and use the shortcut ctrl+alt+r (or right click on the text and select "PHPSimpleRefactor: extract method"). The plugin will ask you for the method name to use, save the current view and apply the patch.
+In a PHP file, select the lines that you'd like to extract to a new method, and use the shortcut **ctrl+alt+r** (or right click on the text and select "**PHPSimpleRefactor: extract method**"). The plugin will ask you for the method name to use, save the current view and apply the patch.
 
 
 License
