@@ -1,5 +1,7 @@
 import sublime, sublime_plugin
 import subprocess
+import tempfile
+import os
 
 class PhpSimpleRefactorCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
@@ -13,8 +15,8 @@ class PhpSimpleRefactorCommand(sublime_plugin.TextCommand):
 			sublime.status_message('File not saved yet, please save first')
 		else:
 			self.file_name = view.file_name();
-			sublime.active_window().show_input_panel('Function name', '', self.on_filled_info, None, None)	
-		
+			sublime.active_window().show_input_panel('Function name', '', self.on_filled_info, None, None)  
+
 
 	def on_filled_info(self, functionName):
 		view = sublime.Window.active_view(sublime.active_window())
@@ -27,10 +29,20 @@ class PhpSimpleRefactorCommand(sublime_plugin.TextCommand):
 		self.php_path = settings.get('php_path')
 		self.refactor_path = settings.get('refactor_path')
 		rows = ''.join([str(self.rowBegin), "-", str(self.rowEnd)])
-		cmd = ''.join([self.php_path, ' ', self.refactor_path,' ',  'extract-method', ' ', self.file_name, ' ', rows, ' ', functionName, ' | patch -p1'])
+		cmd = ''.join([self.php_path, ' "', self.refactor_path,'" ',  'extract-method', ' "', self.file_name, '" ', rows, ' ', functionName])
 		p = subprocess.Popen(cmd, shell=True, bufsize=-1, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
 		output, error = p.communicate()
 		if error:
 			sublime.error_message(error.decode('utf-8'))
 		else:
-			sublime.status_message('Refactor completed')
+			fp = tempfile.NamedTemporaryFile(delete=False)
+			fp.write(output)
+			fp.close()
+			cmd = ''.join(['patch -p1 "',self.file_name,'" "',fp.name,'"'])
+			pr = subprocess.Popen(cmd, shell=True, bufsize=-1, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
+			output, error = pr.communicate()
+			os.remove(fp.name)
+			if error:
+				sublime.error_message(error.decode('utf-8'))
+			else:
+				sublime.status_message('Refactor completed')
