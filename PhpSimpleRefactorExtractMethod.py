@@ -3,7 +3,7 @@ import subprocess
 import tempfile
 import os
 
-class PhpSimpleRefactorCommand(sublime_plugin.TextCommand):
+class PhpSimpleRefactorExtractMethodCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
 		(rowBegin,col) = self.view.rowcol(self.view.sel()[0].begin())
 		(rowEnd,col) = self.view.rowcol(self.view.sel()[0].end())
@@ -15,7 +15,7 @@ class PhpSimpleRefactorCommand(sublime_plugin.TextCommand):
 			sublime.status_message('File not saved yet, please save first')
 		else:
 			self.file_name = view.file_name();
-			sublime.active_window().show_input_panel('Function name', '', self.on_filled_info, None, None)  
+			sublime.active_window().show_input_panel('Function name', '', self.on_filled_info, None, None)
 
 
 	def on_filled_info(self, functionName):

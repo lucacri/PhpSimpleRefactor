@@ -1,4 +1,14 @@
 [{
-	"caption": "PHPSimpleRefactor: extract method",
-	"command": "php_simple_refactor"
+    "caption": "PHPSimpleRefactor",
+    "children":
+    [
+        {
+    	   "caption": "Extract method",
+    	   "command": "php_simple_refactor_extract_method"
+        },
+        {
+           "caption": "Rename local variable",
+           "command": "php_simple_refactor_rename_local_variable"
+        }
+    ]
 }]
