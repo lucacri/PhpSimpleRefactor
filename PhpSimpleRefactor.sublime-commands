@@ -1,6 +1,10 @@
 [
     {
         "caption": "PHPSimpleRefactor: extract current lines to method",
-        "command": "php_simple_refactor"
+        "command": "php_simple_refactor_extract_method"
+    },
+    {
+        "caption": "PHPSimpleRefactor: renames a local variable",
+        "command": "php_simple_refactor_rename_local_variable"
     }
 ]

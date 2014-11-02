@@ -28,7 +28,11 @@ Example:
 
 Usage
 =====
-In a PHP file, select the lines that you'd like to extract to a new method, and use the shortcut **ctrl+alt+r** (or right click on the text and select "**PHPSimpleRefactor: extract method**"). The plugin will ask you for the method name to use, save the current view and apply the patch.
+There are two funcionalities:
+
+**Extract method:** Select the lines that you'd like to extract to a new method, and use the shortcut **ctrl+alt+r** (or right click on the text and select "**PHPSimpleRefactor -> Extract method**"). The plugin will ask you for the method name to use. 
+
+**Rename local variable:** Right click inside the scope that contains the local variable that you want to rename and select "**PHPSimpleRefactor -> Rename local variable**". The plugin will ask you for the variable old name and the new name.
 
 
 License

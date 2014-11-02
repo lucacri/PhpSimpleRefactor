@@ -2,8 +2,11 @@ import sublime, sublime_plugin
 import subprocess
 import tempfile
 import os
+import abc
 
-class PhpSimpleRefactorCommand(sublime_plugin.TextCommand):
+class PhpSimpleRefactorBaseCommand(sublime_plugin.TextCommand):
+	__metaclass__ = abc.ABCMeta
+
 	def run(self, edit):
 		(rowBegin,col) = self.view.rowcol(self.view.sel()[0].begin())
 		(rowEnd,col) = self.view.rowcol(self.view.sel()[0].end())
@@ -15,22 +18,23 @@ class PhpSimpleRefactorCommand(sublime_plugin.TextCommand):
 			sublime.status_message('File not saved yet, please save first')
 		else:
 			self.file_name = view.file_name();
-			sublime.active_window().show_input_panel('Function name', '', self.on_filled_info, None, None)  
+			self.process()
 
+	@abc.abstractmethod
+	def process(self):
+		return
 
-	def on_filled_info(self, functionName):
+	def get_command(self):
+		return
+
+	def on_filled_info(self):
 		view = sublime.Window.active_view(sublime.active_window())
 		# save if dirty
 		if view.is_dirty():
 			view.run_command('save')
 			sublime.status_message('File saved')
 
-		settings = sublime.load_settings('PHPSimpleRefactor.sublime-settings')
-		self.php_path = settings.get('php_path')
-		self.refactor_path = settings.get('refactor_path')
-		rows = ''.join([str(self.rowBegin), "-", str(self.rowEnd)])
-		cmd = ''.join([self.php_path, ' "', self.refactor_path,'" ',  'extract-method', ' "', self.file_name, '" ', rows, ' ', functionName])
-		p = subprocess.Popen(cmd, shell=True, bufsize=-1, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
+		p = self.get_command()
 		output, error = p.communicate()
 		if error:
 			sublime.error_message(error.decode('utf-8'))
