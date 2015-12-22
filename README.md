@@ -28,7 +28,7 @@ Example:
 
 Usage
 =====
-There are two funcionalities:
+There are two functionalities:
 
 **Extract method:** Select the lines that you'd like to extract to a new method, and use the shortcut **ctrl+alt+r** (or right click on the text and select "**PHPSimpleRefactor -> Extract method**"). The plugin will ask you for the method name to use. 
 
